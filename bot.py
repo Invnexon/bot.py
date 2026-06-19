@@ -3,7 +3,7 @@ import yt_dlp
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
 
-TOKEN = os.getenv("8643380281:AAGayVXrlD40NSVLcG4qPkweCUpL50F62AQ")
+TOKEN = os.environ.get("8643380281:AAGayVXrlD40NSVLcG4qPkweCUpL50F62AQ")
 # Agar aapka channel Public hai toh username use karein (Example: "@yourchannel")
 # Agar aapka channel Private hai, toh code mein channel ID use karni padti hai.
 CHANNEL_LINK = "https://t.me/+V8X-WAWXHn45Y2Y1" 
