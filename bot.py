@@ -1,12 +1,10 @@
-import os
 import yt_dlp
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
 
-TOKEN = os.environ.get("8643380281:AAGayVXrlD40NSVLcG4qPkweCUpL50F62AQ")
-# Agar aapka channel Public hai toh username use karein (Example: "@yourchannel")
-# Agar aapka channel Private hai, toh code mein channel ID use karni padti hai.
-CHANNEL_LINK = "https://t.me/+V8X-WAWXHn45Y2Y1" 
+# Token aur Channel Link
+TOKEN = "8643380281:AAGayVXrlD40NSVLcG4qPkweCUpL50F62AQ"
+CHANNEL_LINK = "https://t.me/+V8X-WAWXHn45Y2Y1"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
@@ -14,13 +12,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("✅ Verify", callback_data="verify_join")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text("Welcome Please Join Channel To Continue Using Bot:", reply_markup=reply_markup)
+    # Simple Welcome Message
+    await update.message.reply_text("Welcome! Please join our channel first and then click on Verify.", reply_markup=reply_markup)
 
 async def verify_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer("Checking... please wait!", show_alert=False)
-    # Note: Private invite link se check karne ke liye bot ka us channel/group mein hona aur admin hona zaruri hai
-    await query.edit_message_text("✅ Verified! Send Link Here.")
+    await query.answer("Verified!")
+    await query.edit_message_text("✅ Verification Successful! Now please send your Instagram link.")
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     url = update.message.text
